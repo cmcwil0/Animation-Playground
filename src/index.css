@@ -1,0 +1,16 @@
+:root {
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
