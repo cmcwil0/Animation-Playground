@@ -1,4 +1,4 @@
-main {
+.button3d-wrapper {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -10,7 +10,6 @@ main {
 .button-background {
     background: hsl(39, 100%, 32%);
     border: none;
-    border-radius: 10%;
     padding: 0;
     cursor: pointer;
     outline-offset: 4px;
@@ -19,13 +18,31 @@ main {
 .button-front {
     background: hsl(43, 100%, 47%);
     display: block;
-    border-radius: 10%;
-    padding: 20px 35px;
     transform: translateY(-6px);
     transition: all 0.05s ease;
     font-size: 2rem;
+    color: white;
 }
 
 .button-background:active .button-front {
     transform: translateY(-2px);
+}
+
+
+.background-square {
+    border-radius: 10%;
+}
+
+.front-square {
+    border-radius: 10%;
+    padding: 20px 35px;
+}
+
+.background-circle {
+    border-radius: 50%;
+}
+
+.front-circle {
+    border-radius: 50%;
+    padding: 30px 30px;
 }

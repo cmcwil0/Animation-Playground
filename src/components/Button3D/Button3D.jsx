@@ -1,12 +1,15 @@
 import './Button3D.css'
 
-const Button3D = ({ children }) => {
+const Button3D = ({ children, shape = 'square' }) => {
+
+  
+
   return (
-    <main>
-      <button className='button-background'>
-        <span className='button-front'>{children}</span>
+    <div className='button3d-wrapper'>
+      <button className={`button-background background-${shape}`}>
+        <span className={`button-front front-${shape}`}>{children}</span>
       </button>
-    </main>
+    </div>
   )
 }
 

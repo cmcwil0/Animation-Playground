@@ -1,12 +1,21 @@
-import Button3D from './components/Button3D/Button3D'
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
+import Home from './pages/Home' 
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(useGSAP);
 
 function App() {
 
   return (
     <>
-      <Button3D>Ayo</Button3D>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/home' element={<Home />}/>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
