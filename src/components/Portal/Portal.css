@@ -11,12 +11,12 @@
 }
 
 .portal-background {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     position: absolute;
     border-radius: 50%;
     width: 400px;
     height: 400px;
     opacity: 0;
+    overflow: hidden;
 }
 
 .moving-gradient {
@@ -37,3 +37,23 @@
     }
 }
 
+.caret {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    transition: all 0.25s ease;
+}
+
+.caret:hover {
+    scale: 1.1;
+    opacity: 0.8;
+}
+
+.caret-left {
+    right: 215px;
+}
+
+.caret-right {
+    left: 215px;
+}
