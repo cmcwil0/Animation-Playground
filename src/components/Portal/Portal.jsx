@@ -64,12 +64,12 @@ const Portal = () => {
         }
     };
 
-    const handlePrev = () => {
+    const handlePrev = () => { //caret back <
         const prevIndex = (activeIndex - 1 + animationKeys.length) % animationKeys.length;
         handleChange(prevIndex);
     };
 
-    const handleNext = () => {
+    const handleNext = () => { //caret forward >
         const nextIndex = (activeIndex + 1) % animationKeys.length;
         handleChange(nextIndex);
     };
