@@ -29,54 +29,15 @@ export const portalAppear = (onComplete) => ({
     onComplete,
 });
 
-
-
-const RouletteBall = () => {
-    const ballRef = useRef();
-    let tl = gsap.timeline();
-    useGSAP(() => {
-        tl.to(ballRef, {
-            transform: 'translateY(-50px)',
-        })
-    }, []);
-    return <div className='roulette-ball' ref={ballRef}></div>
+export const EnterTransition = ( portalRef, portalBackgroundRef, onComplete ) => {
+    useGSAP(()=> {
+        gsap.to([portalRef, portalBackgroundRef], { 
+        scale: 10,
+        duration: 5,
+        onComplete,
+     }, [])
+    })
     
 }
-
-export const ANIMATIONS = {
-    gradient: {
-        activate: (bgRef, portalRef, setRenderState) => {
-            
-        },
-        deactivate: (bgRef, portalRef, setRenderState) => {
-            
-        },
-        render: (renderState) => null,
-    },
-    node: {
-        activate: (bgRef, portalRef, setRenderState) => {
-            setRenderState(true);
-            gsap.to(portalRef.current, { backdropFilter: 'blur(0px)', duration: 0.75 });
-        },
-        deactivate: (bgRef, portalRef, setRenderState) => {
-            setRenderState(false);
-            gsap.to(portalRef.current, { backdropFilter: 'blur(20px)', duration: 0.75 });
-        },
-        render: (renderState) =>
-            renderState ? (
-                <video 
-                    src={nodeAnimation}
-                    autoPlay
-                    loop
-                    muted
-                    style={{width: '100%', height: '100%', objectFit: 'cover', display: 'block'}}
-                />           
-            ) : null,
-        },
-   
-        //add more animations...
-};
-
-
 
 

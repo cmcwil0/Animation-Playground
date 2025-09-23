@@ -1,25 +1,14 @@
-import gsap from 'gsap';
+import gsap from 'gsap'
 
-
-export const gradientAnimation = {
+export const GradientPreview = {
     activate: (portalRef, portalBackgroundRef, setRenderState) => {
+        setRenderState(null);
         portalBackgroundRef.current.classList.add('moving-gradient');
-        setRenderState(false);
+      
     },
     deactivate: (portalRef ,portalBackgroundRef, setRenderState) => {
         portalBackgroundRef.current.classList.remove('moving-gradient');
-        setRenderState(false);
+        setRenderState(null);
     },
     render: (renderState) => null,
 }
-
-
-const Gradient = () => {
-  return (
-    <div className="gradient-container">
-      
-    </div>
-  )
-}
-
-export default Gradient

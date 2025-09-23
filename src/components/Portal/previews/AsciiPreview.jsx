@@ -1,7 +1,7 @@
 import gsap from 'gsap';
-import nodeAnimation from '../../../../assets/nodeAnimation.mp4';
+import nodeAnimation from '../../../assets/nodeAnimation.mp4';
 
-export const asciiAnimation = {
+export const AsciiPreview = {
   activate: (portalRef, portalBackgroundRef, setRenderState) => {
     setRenderState(true);
     gsap.to(portalRef.current, { backdropFilter: 'blur(0px)', duration: 1 })
@@ -23,13 +23,3 @@ export const asciiAnimation = {
     </div>
   )
 }
-
-const Ascii = () => {
-  return (
-    <div className='ascii-container'>
-      
-    </div>
-  )
-}
-
-export default Ascii
