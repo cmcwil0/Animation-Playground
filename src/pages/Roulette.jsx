@@ -1,5 +1,8 @@
+import { useGSAP } from '@gsap/react';
 import '../css/Roulette.css';
 import gsap from 'gsap';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+import { useRef } from 'react';
 
 //european roulette table
 export const ROULETTE_NUMBERS = [
@@ -12,12 +15,106 @@ export function rouletteColor(num) { //assigns color based off standard roulette
     return num % 2 === 0 ? 'red' : 'black' } 
 };
 
+export const RoulettePreview = {
+    render: (renderState) => {
+      return renderState ? (
+        <div className='roulette-preview'>
+          <ul>
+            {ROULETTE_NUMBERS.map((num, index) => {
+                const angle = index * (360 / ROULETTE_NUMBERS.length); // 360 / 37 = 9.73deg each num takes up. Each index multiplys to get respective position
+                const radius = 175; //distance from center of circle each num will be positioned at (container = 400 x 400 -> center point = 200 x 200 -> 175 leaves 30px margin)
+                return (
+                    <li className='roulette-number' key={index}>
+                        <span
+                          className={`roulette-number-value ${rouletteColor(num)}`} //classname assigns color
+                          data-number={num}
+                          style={{transform: `rotate(${angle}deg) translateY(-${radius}px)`}}
+                        >
+                          {num}
+                        </span>
+                    </li>
+                )
+            })}
+          </ul>
+          <div className='inner-circle'>
+            <div className='roulette-ball'></div>
+          </div>
+        </div>
+      ) : null;
+    },
+    activate: (portalRef, portalBackgroundRef, setRenderState) => {
+      setRenderState(true);
+      gsap.to(portalRef.current, { backdropFilter: 'blur(0px)', duration: 0.75 });
+      gsap.to(portalBackgroundRef.current, { 
+          background: 'brown',
+          backdropFilter: 'blur(10px)', 
+      });
+      
+    },
+    deactivate: (portalRef, portalBackgroundRef, setRenderState) => {
+      setRenderState(false);
+      gsap.to(portalRef.current, { backdropFilter: 'blur(20px)', duration: 0.75 });
+      portalBackgroundRef.current.style.background = '';
+      portalBackgroundRef.current.style.backdropFilter = '';
+    },
+  
+}
+
+function getLandedNumber() {
+
+}
+
 
 
 const Roulette = () => {
   return (
     <div className="roulette-container">
-        roulette
+        <main className='roulette-table'>
+          <div className='roulette-wheel'>
+            <ul>
+            {ROULETTE_NUMBERS.map((num, index) => {
+                const angle = index * (360 / ROULETTE_NUMBERS.length); // 360 / 37 = 9.73deg each num takes up. Each index multiplys to get respective position
+                const radius = 175; //distance from center of circle each num will be positioned at (container = 400 x 400 -> center point = 200 x 200 -> 175 leaves 30px margin)
+                return (
+                    <li className='roulette-number' key={index}>
+                        <span
+                          className={`roulette-number-value ${rouletteColor(num)}`} //classname assigns color
+                          data-number={num}
+                          style={{transform: `rotate(${angle}deg) translateY(-${radius}px)`}}
+                        >
+                          {num}
+                        </span>
+                    </li>
+                )
+            })}
+          </ul>
+          <div className='inner-circle'>
+            <div className='roulette-ball'></div>
+          </div>
+          </div>
+
+          <div className='betting-container'>
+            <div className='betting-numbers'>
+
+              
+
+              <div className='main-numbers'>
+                {ROULETTE_NUMBERS.sort((a, b) => b-a).map((num) => {
+                  if(num !== 0) {console.log(num);return (
+                    <div className={`main-number ${rouletteColor(num)}`} data-number={num}>{num}</div>
+                  )}
+                })}
+              </div>
+
+
+            </div>
+            <div className='outside-bets'>
+              <div className='diamond black'></div>
+              <div className='diamond red'></div>
+            </div>
+          </div>
+
+        </main>
     </div>
   )
 }

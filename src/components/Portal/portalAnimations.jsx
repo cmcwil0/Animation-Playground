@@ -29,15 +29,4 @@ export const portalAppear = (onComplete) => ({
     onComplete,
 });
 
-export const EnterTransition = ( portalRef, portalBackgroundRef, onComplete ) => {
-    useGSAP(()=> {
-        gsap.to([portalRef, portalBackgroundRef], { 
-        scale: 10,
-        duration: 5,
-        onComplete,
-     }, [])
-    })
-    
-}
-
 

@@ -6,8 +6,10 @@ import { useGSAP } from '@gsap/react'
 import Gradient from './pages/Gradient';
 import Ascii from './pages/Ascii';
 import Roulette from './pages/Roulette';
+import MotionPathPlugin from 'gsap/MotionPathPlugin';
 
 gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(MotionPathPlugin)
 
 function App() {
 

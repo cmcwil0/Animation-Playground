@@ -2,11 +2,11 @@ import './Portal.css';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef, useEffect, useState, act } from 'react';
-import {RoulettePreview} from './previews/RoulettePreview';
-import {GradientPreview} from './previews/GradientPreview';
-import {AsciiPreview} from './previews/AsciiPreview';
+import { RoulettePreview } from '../../pages/Roulette';
+import { GradientPreview } from '../../pages/Gradient';
+import { AsciiPreview } from '../../pages/Ascii';
 import { useNavigate } from 'react-router-dom';
-import { EnterTransition, initialState, portalAppear } from './portalAnimations';
+import { initialState, portalAppear } from './portalAnimations';
 
 const ANIMATIONS = [
     GradientPreview, AsciiPreview, RoulettePreview
@@ -78,7 +78,15 @@ const Portal = () => {
     };
 
     const handleEnter = () => {
-        EnterTransition(portalRef, portalBackgroundRef, () => handleTransitionComplete)
+        gsap.to([portalRef.current, portalBackgroundRef.current], {
+        scale: 50,
+        ease: 'power4.in',
+        duration: 2,
+        onComplete: () => {
+            console.log('oncomplete');
+            handleTransitionComplete();
+        }
+        })
     }
 
     const handleTransitionComplete = () => {
