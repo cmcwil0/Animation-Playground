@@ -1,17 +1,17 @@
+@import "tailwindcss";
 
 :root {
   font-family: "Be Vietnam Pro", sans-serif;
-}
+  --primary-color: #1E3231;
+  --secondary-color: #FAF9F9;
 
-*, *::before, *::after {
-  box-sizing: border-box;
+  --background-primary: #303030;
+  
+  /* Sea salt white */
+  --text-primary: #FAF9F9;
+  --text-secondary: #89B0AE;
 }
 
 button {
   font-family: inherit;
-}
-
-body {
-  margin: 0;
-  padding: 0;
 }

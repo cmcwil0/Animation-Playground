@@ -2,9 +2,9 @@ import './Portal.css';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef, useEffect, useState, act } from 'react';
-import { RoulettePreview } from '../../pages/Roulette';
-import { GradientPreview } from '../../pages/Gradient';
-import { AsciiPreview } from '../../pages/Ascii';
+import { RoulettePreview } from '../../portals/Roulette';
+import { GradientPreview } from '../../portals/Gradient';
+import { AsciiPreview } from '../../portals/Ascii';
 import { useNavigate } from 'react-router-dom';
 import { initialState, portalAppear } from './portalAnimations';
 
